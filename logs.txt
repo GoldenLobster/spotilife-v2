@@ -5,19 +5,19 @@ Run make package FINALPACKAGE=1
   env:
     SWIFTPROTOBUF_VERSION: 1.29.0
     THEOS: /Users/runner/work/spotilife-v2/spotilife-v2/theos
-    MD_APPLE_SDK_ROOT: /Applications/Xcode_26.6.app
+    MD_APPLE_SDK_ROOT: /Applications/Xcode_26.2.app
 > Making all for tweak EeveeSpotify…
 ==> Building Swift support tools…
 Building for production...
 [0/7] Write sources
-[2/7] Write swift-version-7974D3F7F03D5E95.txt
+[2/7] Write swift-version--686F30C3778417F.txt
 [4/9] Compiling FileMapGenerator main.swift
 [4/9] Write Objects.LinkFileList
 [5/9] Linking generate-output-file-map
 [7/9] Compiling SwiftcOutputParser FileLock.swift
 [7/9] Write Objects.LinkFileList
 [8/9] Linking parse-swiftc-output
-Build complete! (6.30s)
+Build complete! (3.07s)
 ==> Building Orion preprocessor (this may take a while)…
 warning: 'orion': /Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Package@swift-5.6.swift:9:14: warning: Orion does not officially support this version of Swift yet. Please check https://github.com/theos/Orion for progress updates.
   7 |     let url = "https://github.com/apple/swift-syntax"
@@ -30,12 +30,12 @@ Fetching https://github.com/apple/swift-syntax
 Fetching https://github.com/apple/swift-argument-parser
 [1/18146] Fetching swift-argument-parser
 [18147/94203] Fetching swift-argument-parser, swift-syntax
-Fetched https://github.com/apple/swift-argument-parser from cache (4.34s)
-Fetched https://github.com/apple/swift-syntax from cache (4.34s)
+Fetched https://github.com/apple/swift-argument-parser from cache (3.63s)
+Fetched https://github.com/apple/swift-syntax from cache (3.63s)
 Computing version for https://github.com/apple/swift-syntax
-Computed https://github.com/apple/swift-syntax at 508.0.1 (4.81s)
+Computed https://github.com/apple/swift-syntax at 508.0.1 (3.99s)
 Computing version for https://github.com/apple/swift-argument-parser
-Computed https://github.com/apple/swift-argument-parser at 1.6.2 (0.31s)
+Computed https://github.com/apple/swift-argument-parser at 1.6.2 (0.22s)
 Creating working copy for https://github.com/apple/swift-argument-parser
 Working copy of https://github.com/apple/swift-argument-parser resolved at 1.6.2
 Creating working copy for https://github.com/apple/swift-syntax
@@ -45,7 +45,7 @@ Working copy of https://github.com/apple/swift-syntax resolved at 508.0.1
 [3/3] Compiling plugin GenerateDoccReference
 Building for production...
 [3/28] Write sources
-[19/28] Write swift-version-7974D3F7F03D5E95.txt
+[19/28] Write swift-version--686F30C3778417F.txt
 [21/31] Compiling ArgumentParserToolInfo ToolInfo.swift
 [23/33] Compiling ArgumentParser BashCompletionsGenerator.swift
 [25/34] Compiling SwiftSyntax AbsolutePosition.swift
@@ -54,9 +54,9 @@ Building for production...
 [31/40] Compiling SwiftSyntaxParser Diagnostic.swift
 [31/40] Write Objects.LinkFileList
 [33/41] Compiling SwiftSyntaxParser Diagnostic.swift
-[33/42] Archiving libSwiftSyntaxParser.a
+[33/42] Archiving libSwiftSyntaxParser-tool.a
 [34/42] Write Objects.LinkFileList
-[35/42] Archiving libSwiftSyntaxParser-tool.a
+[35/42] Archiving libSwiftSyntaxParser.a
 [37/42] Compiling OrionProcessor OrionBatchParser.swift
 /Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:18:9: warning: 'makeFunctionType(_:leftParen:_:arguments:_:rightParen:_:asyncKeyword:_:throwsOrRethrowsKeyword:_:arrow:_:returnType:_:)' is deprecated: Use initializer on FunctionTypeSyntax [#DeprecatedDeclaration]
  16 |         returnType: TypeSyntax
@@ -544,13 +544,13 @@ Building for production...
   6 |     public init?(argument: String) {
   7 |         self.init(name: argument)
 [41/44] Write Objects.LinkFileList
-[42/44] Linking OrionCLI-tool
 [42/44] Linking OrionCLI
-Build complete! (234.79s)
+[43/44] Linking OrionCLI-tool
+Build complete! (191.00s)
 Sources/EeveeSpotify/DataLoaderServiceHooks.x.swift:14:5: warning: Unused directive
+==> Preprocessing Sources/EeveeSpotify/Lyrics/NowPlayingScrollViewControllerInstanceHook.x.swift, Sources/EeveeSpotify/Lyrics/CustomLyrics+ShowAttributes.x.swift, Sources/EeveeSpotify/Lyrics/CustomLyrics+HideOnError.x.swift, Sources/EeveeSpotify/Lyrics/CustomLyrics+DisableReportButton.x.swift, Sources/EeveeSpotify/Lyrics/V91TrackMetadataCapture.x.swift, Sources/EeveeSpotify/Lyrics/CustomLyrics.x.swift, Sources/EeveeSpotify/Lyrics/CustomLyrics+ScrollCrashFix.x.swift, Sources/EeveeSpotify/Lyrics/CustomLyrics+AllTracksLyrics.x.swift, Sources/EeveeSpotify/Settings/EeveeSettings91x.x.swift, Sources/EeveeSpotify/Settings/EeveeSettings.x.swift, Sources/EeveeSpotify/Settings/EeveeSettingsUniversal.x.swift, Sources/EeveeSpotify/Experiments/LiveContainer/LiveContainerSharing.x.swift, Sources/EeveeSpotify/Experiments/Instagram/ShowInstagramDestination.x.swift, Sources/EeveeSpotify/OpenSpotify.x.swift, Sources/EeveeSpotify/SessionProtection.x.swift, Sources/EeveeSpotify/DataLoaderServiceHooks.x.swift, Sources/EeveeSpotify/DarkPopUps.x.swift, Sources/EeveeSpotify/Premium/HubsAdBlocker.x.swift, Sources/EeveeSpotify/Premium/ServerSidedReminder.x.swift, Sources/EeveeSpotify/Premium/LikedSongsEnabler.x.swift, Sources/EeveeSpotify/Premium/TrackRowsEnabler.x.swift, Sources/EeveeSpotify/Premium/Helpers/AutoDownloadHook.x.swift, Sources/EeveeSpotify/Premium/SiriNoPlayAsRadio.x.swift, Sources/EeveeSpotify/Premium/DynamicPremium+ModifyBootstrap.x.swift, Sources/EeveeSpotify/Tweak.x.swift…
 Sources/EeveeSpotify/DataLoaderServiceHooks.x.swift:17:5: warning: Unused directive
 Sources/EeveeSpotify/SessionProtection.x.swift:27:5: warning: Unused directive
-==> Preprocessing Sources/EeveeSpotify/Lyrics/NowPlayingScrollViewControllerInstanceHook.x.swift, Sources/EeveeSpotify/Lyrics/CustomLyrics+ShowAttributes.x.swift, Sources/EeveeSpotify/Lyrics/CustomLyrics+HideOnError.x.swift, Sources/EeveeSpotify/Lyrics/CustomLyrics+DisableReportButton.x.swift, Sources/EeveeSpotify/Lyrics/V91TrackMetadataCapture.x.swift, Sources/EeveeSpotify/Lyrics/CustomLyrics.x.swift, Sources/EeveeSpotify/Lyrics/CustomLyrics+ScrollCrashFix.x.swift, Sources/EeveeSpotify/Lyrics/CustomLyrics+AllTracksLyrics.x.swift, Sources/EeveeSpotify/Settings/EeveeSettings91x.x.swift, Sources/EeveeSpotify/Settings/EeveeSettings.x.swift, Sources/EeveeSpotify/Settings/EeveeSettingsUniversal.x.swift, Sources/EeveeSpotify/Experiments/LiveContainer/LiveContainerSharing.x.swift, Sources/EeveeSpotify/Experiments/Instagram/ShowInstagramDestination.x.swift, Sources/EeveeSpotify/OpenSpotify.x.swift, Sources/EeveeSpotify/SessionProtection.x.swift, Sources/EeveeSpotify/DataLoaderServiceHooks.x.swift, Sources/EeveeSpotify/DarkPopUps.x.swift, Sources/EeveeSpotify/Premium/HubsAdBlocker.x.swift, Sources/EeveeSpotify/Premium/ServerSidedReminder.x.swift, Sources/EeveeSpotify/Premium/LikedSongsEnabler.x.swift, Sources/EeveeSpotify/Premium/TrackRowsEnabler.x.swift, Sources/EeveeSpotify/Premium/Helpers/AutoDownloadHook.x.swift, Sources/EeveeSpotify/Premium/SiriNoPlayAsRadio.x.swift, Sources/EeveeSpotify/Premium/DynamicPremium+ModifyBootstrap.x.swift, Sources/EeveeSpotify/Tweak.x.swift…
 ==> Compiling Sources/EeveeSpotify/Lyrics/NowPlayingScrollViewControllerInstanceHook.x.swift (arm64)…
 ==> Compiling Sources/EeveeSpotify/Lyrics/CustomLyrics+ShowAttributes.x.swift (arm64)…
 ==> Compiling Sources/EeveeSpotify/Lyrics/CustomLyrics+HideOnError.x.swift (arm64)…
@@ -753,11 +753,11 @@ Sources/EeveeSpotify/SessionProtection.x.swift:27:5: warning: Unused directive
 ==> Compiling Sources/EeveeSpotify/Premium/SiriNoPlayAsRadio.x.swift (arm64)…
 ==> Compiling Sources/EeveeSpotify/Premium/DynamicPremium+ModifyBootstrap.x.swift (arm64)…
 ==> Compiling Sources/EeveeSpotify/Tweak.x.swift (arm64)…
-Sources/EeveeSpotify/Lyrics/Models/Lyrics.pb.swift:11:8: error: module compiled with Swift 6.0.3 cannot be imported by the Swift 6.3.3 compiler: /Users/runner/work/spotilife-v2/spotilife-v2/theos/lib/SwiftProtobuf.framework/Modules/SwiftProtobuf.swiftmodule/arm64-apple-ios.swiftmodule
+Sources/EeveeSpotify/Lyrics/Models/Lyrics.pb.swift:11:8: error: module compiled with Swift 6.0.3 cannot be imported by the Swift 6.2.3 compiler: /Users/runner/work/spotilife-v2/spotilife-v2/theos/lib/SwiftProtobuf.framework/Modules/SwiftProtobuf.swiftmodule/arm64-apple-ios.swiftmodule
   9 |
  10 | import Foundation
  11 | import SwiftProtobuf
-    |        `- error: module compiled with Swift 6.0.3 cannot be imported by the Swift 6.3.3 compiler: /Users/runner/work/spotilife-v2/spotilife-v2/theos/lib/SwiftProtobuf.framework/Modules/SwiftProtobuf.swiftmodule/arm64-apple-ios.swiftmodule
+    |        `- error: module compiled with Swift 6.0.3 cannot be imported by the Swift 6.2.3 compiler: /Users/runner/work/spotilife-v2/spotilife-v2/theos/lib/SwiftProtobuf.framework/Modules/SwiftProtobuf.swiftmodule/arm64-apple-ios.swiftmodule
  12 |
  13 | // If the compiler emits an error on this type, it is because this file
 

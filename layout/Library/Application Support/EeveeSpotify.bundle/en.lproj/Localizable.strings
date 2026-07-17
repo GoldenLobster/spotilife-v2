@@ -150,3 +150,10 @@ debug_log_cleared_ok = "OK";
 no_debug_log_found = "No debug log found. The log starts recording when the app launches.";
 no_debug_log_found_ok = "OK";
 debug_section_footer = "Export or clear the debug log.";
+
+// Downloads
+downloads = "Downloads";
+auto_download_played_songs = "Auto-download Played Songs";
+currently_playing = "Currently Playing";
+downloaded_songs = "Downloaded Songs";
+

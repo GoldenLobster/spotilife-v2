@@ -65,6 +65,19 @@ struct EeveeSettingsView: View {
             
             Button {
                 pushSettingsController(
+                    with: EeveeDownloadsSettingsView(),
+                    title: "downloads".localized
+                )
+            } label: {
+                NavigationSectionView(
+                    color: .green,
+                    title: "downloads".localized,
+                    imageSystemName: "arrow.down.circle.fill"
+                )
+            }
+            
+            Button {
+                pushSettingsController(
                     with: EeveeUISettingsView(),
                     title: "customization".localized
                 )

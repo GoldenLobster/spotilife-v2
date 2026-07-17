@@ -11,6 +11,7 @@ extension UserDefaults {
     private static let lyricsColorsKey = "lyricsColors"
     private static let lyricsOptionsKey = "lyricsOptions"
     private static let hasShownCommonIssuesTipKey = "hasShownCommonIssuesTip"
+    private static let autoDownloadPlayedTracksKey = "autoDownloadPlayedTracks"
 
     static var musixmatchToken: String {
         get {
@@ -67,6 +68,15 @@ extension UserDefaults {
         }
         set (hasShownCommonIssuesTip) {
             container.set(hasShownCommonIssuesTip, forKey: hasShownCommonIssuesTipKey)
+        }
+    }
+    
+    static var autoDownloadPlayedTracks: Bool {
+        get {
+            container.object(forKey: autoDownloadPlayedTracksKey) as? Bool ?? false
+        }
+        set (autoDownloadPlayedTracks) {
+            container.set(autoDownloadPlayedTracks, forKey: autoDownloadPlayedTracksKey)
         }
     }
 }

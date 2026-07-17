@@ -217,13 +217,5 @@ jobs:
         gh release upload "swift$EEVEESPOTIFY_VERSION" \
           "$EEVEESPOTIFY_ROOTFUL" "$EEVEESPOTIFY_ROOTLESS" \
           "$SWIFTPROTOBUF_ROOTFUL" "$SWIFTPROTOBUF_ROOTLESS" \
+          "$EEVEESPOTIFY_PACKAGE" "$EEVEESPOTIFY_PATCHED_PACKAGE" \
           --clobber
-
-    - name: Upload Packages to Telegram
-      env:
-        API_ID: ${{ secrets.API_ID }}
-        API_HASH: ${{ secrets.API_HASH }}
-        BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
-        EEVEESPOTIFY_CHANNEL_ID: ${{ secrets.EEVEESPOTIFY_CHANNEL_ID }}
-        EEVEESPOTIFY_CHANNEL_ACCESS_HASH: ${{ secrets.EEVEESPOTIFY_CHANNEL_ACCESS_HASH }}
-      run: ./Tools/TelegramUploadEeveeSpotify

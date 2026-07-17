@@ -1,7 +1,13 @@
 name: Build and Release Swift
 
 on:
-  workflow_dispatch: 
+  workflow_dispatch:
+    inputs:
+      ipa_url:
+        description: "Optional URL to decrypted Spotify IPA (if you don't have the decrypter API key)"
+        default: ""
+        required: false
+        type: string
 
 env:
   SWIFTPROTOBUF_VERSION: "1.29.0"
@@ -106,11 +112,22 @@ jobs:
 
     - name: Download Decrypted Spotify Package
       run: |
-        response=$(curl -ks 'https://decrypt.whoeevee.com/decrypted?appId=324684580&apiKey=${{ secrets.EEVEEDECRYPTER_API_KEY }}')
-        link=$(echo "$response" | jq -r '.link')
-        wget --no-check-certificate -q $link
-        echo "SPOTIFY_VERSION=${${(s/-/)link}[2]%.ipa}" >> $GITHUB_ENV
-        echo "SPOTIFY_PACKAGE=$(echo *.ipa)" >> $GITHUB_ENV
+        if [[ -n "${{ inputs.ipa_url }}" ]]; then
+          wget "${{ inputs.ipa_url }}" -q -O spotify.ipa
+          version=$(echo "${{ inputs.ipa_url }}" | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' || echo "latest")
+          echo "SPOTIFY_VERSION=$version" >> $GITHUB_ENV
+          echo "SPOTIFY_PACKAGE=spotify.ipa" >> $GITHUB_ENV
+        else
+          response=$(curl -ks 'https://decrypt.whoeevee.com/decrypted?appId=324684580&apiKey=${{ secrets.EEVEEDECRYPTER_API_KEY }}')
+          link=$(echo "$response" | jq -r '.link')
+          if [[ "$link" == "null" || -z "$link" ]]; then
+            echo "::error::Failed to retrieve decrypted Spotify package. Please specify ipa_url or set EEVEEDECRYPTER_API_KEY."
+            exit 1
+          fi
+          wget --no-check-certificate -q "$link"
+          echo "SPOTIFY_VERSION=${${(s/-/)link}[2]%.ipa}" >> $GITHUB_ENV
+          echo "SPOTIFY_PACKAGE=$(echo *.ipa)" >> $GITHUB_ENV
+        fi
 
     - name: Setup insert-dylib
       run: |

@@ -129,6 +129,18 @@ jobs:
           echo "SPOTIFY_PACKAGE=$(echo *.ipa)" >> $GITHUB_ENV
         fi
 
+    - name: Remove Watch App from IPA
+      run: |
+        unzip -q "$SPOTIFY_PACKAGE" -d spotify_temp
+        rm -rf spotify_temp/Payload/Spotify.app/Watch
+        rm -rf spotify_temp/Payload/Spotify.app/PlugIns/*.appex
+        cd spotify_temp
+        zip -qr ../spotify_clean.ipa Payload
+        cd ..
+        rm -rf spotify_temp
+        mv spotify_clean.ipa spotify.ipa
+        echo "SPOTIFY_PACKAGE=spotify.ipa" >> $GITHUB_ENV
+
     - name: Setup insert-dylib
       run: |
         git clone https://github.com/Tyilo/insert_dylib.git

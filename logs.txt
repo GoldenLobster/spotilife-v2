@@ -1,0 +1,769 @@
+Run make package FINALPACKAGE=1
+  make package FINALPACKAGE=1
+  echo "filename=$(find . -not -name '*debug*' -path './packages/*' | cut -d/ -f3)" >> $GITHUB_ENV
+  shell: /bin/bash -e {0}
+  env:
+    SWIFTPROTOBUF_VERSION: 1.29.0
+    THEOS: /Users/runner/work/spotilife-v2/spotilife-v2/theos
+    MD_APPLE_SDK_ROOT: /Applications/Xcode_26.6.app
+> Making all for tweak EeveeSpotify…
+==> Building Swift support tools…
+Building for production...
+[0/7] Write sources
+[2/7] Write swift-version-7974D3F7F03D5E95.txt
+[4/9] Compiling FileMapGenerator main.swift
+[4/9] Write Objects.LinkFileList
+[5/9] Linking generate-output-file-map
+[7/9] Compiling SwiftcOutputParser FileLock.swift
+[7/9] Write Objects.LinkFileList
+[8/9] Linking parse-swiftc-output
+Build complete! (6.30s)
+==> Building Orion preprocessor (this may take a while)…
+warning: 'orion': /Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Package@swift-5.6.swift:9:14: warning: Orion does not officially support this version of Swift yet. Please check https://github.com/theos/Orion for progress updates.
+  7 |     let url = "https://github.com/apple/swift-syntax"
+  8 |     #if swift(>=5.9)
+  9 |     #warning("""
+    |              `- warning: Orion does not officially support this version of Swift yet. Please check https://github.com/theos/Orion for progress updates.
+ 10 |     Orion does not officially support this version of Swift yet. \
+ 11 |     Please check https://github.com/theos/Orion for progress updates.
+Fetching https://github.com/apple/swift-syntax
+Fetching https://github.com/apple/swift-argument-parser
+[1/18146] Fetching swift-argument-parser
+[18147/94203] Fetching swift-argument-parser, swift-syntax
+Fetched https://github.com/apple/swift-argument-parser from cache (4.34s)
+Fetched https://github.com/apple/swift-syntax from cache (4.34s)
+Computing version for https://github.com/apple/swift-syntax
+Computed https://github.com/apple/swift-syntax at 508.0.1 (4.81s)
+Computing version for https://github.com/apple/swift-argument-parser
+Computed https://github.com/apple/swift-argument-parser at 1.6.2 (0.31s)
+Creating working copy for https://github.com/apple/swift-argument-parser
+Working copy of https://github.com/apple/swift-argument-parser resolved at 1.6.2
+Creating working copy for https://github.com/apple/swift-syntax
+Working copy of https://github.com/apple/swift-syntax resolved at 508.0.1
+[1/1] Compiling plugin OrionPlugin
+[2/2] Compiling plugin GenerateManual
+[3/3] Compiling plugin GenerateDoccReference
+Building for production...
+[3/28] Write sources
+[19/28] Write swift-version-7974D3F7F03D5E95.txt
+[21/31] Compiling ArgumentParserToolInfo ToolInfo.swift
+[23/33] Compiling ArgumentParser BashCompletionsGenerator.swift
+[25/34] Compiling SwiftSyntax AbsolutePosition.swift
+[27/35] Compiling SwiftDiagnostics Diagnostic.swift
+[29/38] Compiling SwiftParser Attributes.swift
+[31/40] Compiling SwiftSyntaxParser Diagnostic.swift
+[31/40] Write Objects.LinkFileList
+[33/41] Compiling SwiftSyntaxParser Diagnostic.swift
+[33/42] Archiving libSwiftSyntaxParser.a
+[34/42] Write Objects.LinkFileList
+[35/42] Archiving libSwiftSyntaxParser-tool.a
+[37/42] Compiling OrionProcessor OrionBatchParser.swift
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:18:9: warning: 'makeFunctionType(_:leftParen:_:arguments:_:rightParen:_:asyncKeyword:_:throwsOrRethrowsKeyword:_:arrow:_:returnType:_:)' is deprecated: Use initializer on FunctionTypeSyntax [#DeprecatedDeclaration]
+ 16 |         returnType: TypeSyntax
+ 17 |     ) -> FunctionTypeSyntax {
+ 18 |         makeFunctionType(
+    |         `- warning: 'makeFunctionType(_:leftParen:_:arguments:_:rightParen:_:asyncKeyword:_:throwsOrRethrowsKeyword:_:arrow:_:returnType:_:)' is deprecated: Use initializer on FunctionTypeSyntax [#DeprecatedDeclaration]
+ 19 |             leftParen: leftParen,
+ 20 |             arguments: arguments,
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:39:9: warning: 'makeDeclModifier(_:name:_:detail:_:)' is deprecated: Use initializer on DeclModifierSyntax [#DeprecatedDeclaration]
+ 37 |         detailRightParen: Any?
+ 38 |     ) -> DeclModifierSyntax {
+ 39 |         makeDeclModifier(name: name, detail: nil)
+    |         `- warning: 'makeDeclModifier(_:name:_:detail:_:)' is deprecated: Use initializer on DeclModifierSyntax [#DeprecatedDeclaration]
+ 40 |     }
+ 41 | }
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:261:57: warning: 'makeIdentifier(_:leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.identifier instead [#DeprecatedDeclaration]
+259 |                 element = element.withFirstName(element.firstName?.withTrailingTrivia(.spaces(1)))
+260 |             }
+261 |             return element.withSecondName(SyntaxFactory.makeIdentifier("arg\(idx + 1)"))
+    |                                                         `- warning: 'makeIdentifier(_:leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.identifier instead [#DeprecatedDeclaration]
+262 |         }
+263 |         guard elements.count == paramList.count else { return nil }
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:264:78: warning: 'makeFunctionParameterList' is deprecated: Use initializer on FunctionParameterListSyntax [#DeprecatedDeclaration]
+262 |         }
+263 |         guard elements.count == paramList.count else { return nil }
+264 |         let input = function.signature.input.withParameterList(SyntaxFactory.makeFunctionParameterList(elements))
+    |                                                                              `- warning: 'makeFunctionParameterList' is deprecated: Use initializer on FunctionParameterListSyntax [#DeprecatedDeclaration]
+265 |         let signature = function.signature.withInput(input).withOutput(function.signature.output?.withoutTrailingTrivia())
+266 |         let function2 = function.withoutTrivia().withSignature(signature)
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:272:41: warning: 'makeIdentifier(_:leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.identifier instead [#DeprecatedDeclaration]
+270 |                 // whereas modifiers need to come after the attributes
+271 |                 SyntaxFactory.makeDeclModifier(
+272 |                     name: SyntaxFactory.makeIdentifier("override"),
+    |                                         `- warning: 'makeIdentifier(_:leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.identifier instead [#DeprecatedDeclaration]
+273 |                     detailLeftParen: nil, detail: nil, detailRightParen: nil
+274 |                 ).withTrailingTrivia(.spaces(1))
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:276:37: warning: 'makeBlankCodeBlock(presence:)' is deprecated: Use initializer on CodeBlockSyntax [#DeprecatedDeclaration]
+274 |                 ).withTrailingTrivia(.spaces(1))
+275 |             )
+276 |             .withBody(SyntaxFactory.makeBlankCodeBlock())
+    |                                     `- warning: 'makeBlankCodeBlock(presence:)' is deprecated: Use initializer on CodeBlockSyntax [#DeprecatedDeclaration]
+277 |             .withFuncKeyword(function.funcKeyword.withoutLeadingTrivia())
+278 |         return Syntax(function2)
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:291:38: warning: 'makeDeclNameArgument(_:name:_:colon:_:)' is deprecated: Use initializer on DeclNameArgumentSyntax [#DeprecatedDeclaration]
+289 |             let argumentsArray = params.compactMap { param -> DeclNameArgumentSyntax? in
+290 |                 guard let firstName = param.firstName, let colon = param.colon else { return nil }
+291 |                 return SyntaxFactory.makeDeclNameArgument(
+    |                                      `- warning: 'makeDeclNameArgument(_:name:_:colon:_:)' is deprecated: Use initializer on DeclNameArgumentSyntax [#DeprecatedDeclaration]
+292 |                     name: firstName.withoutTrivia(), colon: colon.withoutTrivia()
+293 |                 )
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:296:47: warning: 'makeDeclNameArguments(_:leftParen:_:arguments:_:rightParen:_:)' is deprecated: Use initializer on DeclNameArgumentsSyntax [#DeprecatedDeclaration]
+294 |             }
+295 |             guard argumentsArray.count == params.count else { return nil }
+296 |             declNameArguments = SyntaxFactory.makeDeclNameArguments(
+    |                                               `- warning: 'makeDeclNameArguments(_:leftParen:_:arguments:_:rightParen:_:)' is deprecated: Use initializer on DeclNameArgumentsSyntax [#DeprecatedDeclaration]
+297 |                 leftParen: SyntaxFactory.makeLeftParenToken(),
+298 |                 arguments: SyntaxFactory.makeDeclNameArgumentList(argumentsArray),
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:297:42: warning: 'makeLeftParenToken(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.leftParenToken instead [#DeprecatedDeclaration]
+295 |             guard argumentsArray.count == params.count else { return nil }
+296 |             declNameArguments = SyntaxFactory.makeDeclNameArguments(
+297 |                 leftParen: SyntaxFactory.makeLeftParenToken(),
+    |                                          `- warning: 'makeLeftParenToken(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.leftParenToken instead [#DeprecatedDeclaration]
+298 |                 arguments: SyntaxFactory.makeDeclNameArgumentList(argumentsArray),
+299 |                 rightParen: SyntaxFactory.makeRightParenToken()
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:298:42: warning: 'makeDeclNameArgumentList' is deprecated: Use initializer on DeclNameArgumentListSyntax [#DeprecatedDeclaration]
+296 |             declNameArguments = SyntaxFactory.makeDeclNameArguments(
+297 |                 leftParen: SyntaxFactory.makeLeftParenToken(),
+298 |                 arguments: SyntaxFactory.makeDeclNameArgumentList(argumentsArray),
+    |                                          `- warning: 'makeDeclNameArgumentList' is deprecated: Use initializer on DeclNameArgumentListSyntax [#DeprecatedDeclaration]
+299 |                 rightParen: SyntaxFactory.makeRightParenToken()
+300 |             )
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:299:43: warning: 'makeRightParenToken(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.rightParenToken instead [#DeprecatedDeclaration]
+297 |                 leftParen: SyntaxFactory.makeLeftParenToken(),
+298 |                 arguments: SyntaxFactory.makeDeclNameArgumentList(argumentsArray),
+299 |                 rightParen: SyntaxFactory.makeRightParenToken()
+    |                                           `- warning: 'makeRightParenToken(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.rightParenToken instead [#DeprecatedDeclaration]
+300 |             )
+301 |         }
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:303:37: warning: 'makeIdentifierExpr(_:identifier:_:declNameArguments:_:)' is deprecated: Use initializer on IdentifierExprSyntax [#DeprecatedDeclaration]
+301 |         }
+302 |
+303 |         return Syntax(SyntaxFactory.makeIdentifierExpr(identifier: function.identifier, declNameArguments: declNameArguments))
+    |                                     `- warning: 'makeIdentifierExpr(_:identifier:_:declNameArguments:_:)' is deprecated: Use initializer on IdentifierExprSyntax [#DeprecatedDeclaration]
+304 |     }
+305 |
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:324:31: warning: 'makeTypeIdentifier(_:leadingTrivia:trailingTrivia:)' is deprecated: Use initializer on SimpleTypeIdentifierSyntax [#DeprecatedDeclaration]
+322 |         case .method(let firstType, let _returnsUnmanaged):
+323 |             prefixTypes = [
+324 |                 SyntaxFactory.makeTypeIdentifier(firstType),
+    |                               `- warning: 'makeTypeIdentifier(_:leadingTrivia:trailingTrivia:)' is deprecated: Use initializer on SimpleTypeIdentifierSyntax [#DeprecatedDeclaration]
+325 |                 SyntaxFactory.makeTypeIdentifier("Selector")
+326 |             ]
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:325:31: warning: 'makeTypeIdentifier(_:leadingTrivia:trailingTrivia:)' is deprecated: Use initializer on SimpleTypeIdentifierSyntax [#DeprecatedDeclaration]
+323 |             prefixTypes = [
+324 |                 SyntaxFactory.makeTypeIdentifier(firstType),
+325 |                 SyntaxFactory.makeTypeIdentifier("Selector")
+    |                               `- warning: 'makeTypeIdentifier(_:leadingTrivia:trailingTrivia:)' is deprecated: Use initializer on SimpleTypeIdentifierSyntax [#DeprecatedDeclaration]
+326 |             ]
+327 |             returnsUnmanaged = _returnsUnmanaged
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:333:27: warning: 'makeTupleTypeElement(type:trailingComma:)' is deprecated: Use initializer on TupleTypeSyntax [#DeprecatedDeclaration]
+331 |         let last = types.last
+332 |         let argumentsArray = types.map { type in
+333 |             SyntaxFactory.makeTupleTypeElement(
+    |                           `- warning: 'makeTupleTypeElement(type:trailingComma:)' is deprecated: Use initializer on TupleTypeSyntax [#DeprecatedDeclaration]
+334 |                 type: type,
+335 |                 trailingComma: type == last ? nil : SyntaxFactory.makeCommaToken().withTrailingTrivia(.spaces(1))
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:335:67: warning: 'makeCommaToken(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.commaToken instead [#DeprecatedDeclaration]
+333 |             SyntaxFactory.makeTupleTypeElement(
+334 |                 type: type,
+335 |                 trailingComma: type == last ? nil : SyntaxFactory.makeCommaToken().withTrailingTrivia(.spaces(1))
+    |                                                                   `- warning: 'makeCommaToken(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.commaToken instead [#DeprecatedDeclaration]
+336 |             )
+337 |         }
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:338:39: warning: 'makeTupleTypeElementList' is deprecated: Use initializer on TupleTypeElementListSyntax [#DeprecatedDeclaration]
+336 |             )
+337 |         }
+338 |         let arguments = SyntaxFactory.makeTupleTypeElementList(argumentsArray)
+    |                                       `- warning: 'makeTupleTypeElementList' is deprecated: Use initializer on TupleTypeElementListSyntax [#DeprecatedDeclaration]
+339 |         let rawReturnType =
+340 |             function.signature.output?.returnType.withoutTrivia() ??
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:341:27: warning: 'makeTypeIdentifier(_:leadingTrivia:trailingTrivia:)' is deprecated: Use initializer on SimpleTypeIdentifierSyntax [#DeprecatedDeclaration]
+339 |         let rawReturnType =
+340 |             function.signature.output?.returnType.withoutTrivia() ??
+341 |             SyntaxFactory.makeTypeIdentifier("Void")
+    |                           `- warning: 'makeTypeIdentifier(_:leadingTrivia:trailingTrivia:)' is deprecated: Use initializer on SimpleTypeIdentifierSyntax [#DeprecatedDeclaration]
+342 |         let returnType: TypeSyntax
+343 |         if returnsUnmanaged {
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:344:47: warning: 'makeSimpleTypeIdentifier(_:name:_:genericArgumentClause:_:)' is deprecated: Use initializer on SimpleTypeIdentifierSyntax [#DeprecatedDeclaration]
+342 |         let returnType: TypeSyntax
+343 |         if returnsUnmanaged {
+344 |             returnType = Syntax(SyntaxFactory.makeSimpleTypeIdentifier(
+    |                                               `- warning: 'makeSimpleTypeIdentifier(_:name:_:genericArgumentClause:_:)' is deprecated: Use initializer on SimpleTypeIdentifierSyntax [#DeprecatedDeclaration]
+345 |                 name: SyntaxFactory.makeIdentifier("Unmanaged"),
+346 |                 genericArgumentClause: SyntaxFactory.makeGenericArgumentClause(
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:345:37: warning: 'makeIdentifier(_:leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.identifier instead [#DeprecatedDeclaration]
+343 |         if returnsUnmanaged {
+344 |             returnType = Syntax(SyntaxFactory.makeSimpleTypeIdentifier(
+345 |                 name: SyntaxFactory.makeIdentifier("Unmanaged"),
+    |                                     `- warning: 'makeIdentifier(_:leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.identifier instead [#DeprecatedDeclaration]
+346 |                 genericArgumentClause: SyntaxFactory.makeGenericArgumentClause(
+347 |                     leftAngleBracket: SyntaxFactory.makeLeftAngleToken(),
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:346:54: warning: 'makeGenericArgumentClause(_:leftAngleBracket:_:arguments:_:rightAngleBracket:_:)' is deprecated: Use initializer on GenericArgumentClauseSyntax [#DeprecatedDeclaration]
+344 |             returnType = Syntax(SyntaxFactory.makeSimpleTypeIdentifier(
+345 |                 name: SyntaxFactory.makeIdentifier("Unmanaged"),
+346 |                 genericArgumentClause: SyntaxFactory.makeGenericArgumentClause(
+    |                                                      `- warning: 'makeGenericArgumentClause(_:leftAngleBracket:_:arguments:_:rightAngleBracket:_:)' is deprecated: Use initializer on GenericArgumentClauseSyntax [#DeprecatedDeclaration]
+347 |                     leftAngleBracket: SyntaxFactory.makeLeftAngleToken(),
+348 |                     arguments: SyntaxFactory.makeGenericArgumentList([
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:347:53: warning: 'makeLeftAngleToken(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.leftAngleToken instead [#DeprecatedDeclaration]
+345 |                 name: SyntaxFactory.makeIdentifier("Unmanaged"),
+346 |                 genericArgumentClause: SyntaxFactory.makeGenericArgumentClause(
+347 |                     leftAngleBracket: SyntaxFactory.makeLeftAngleToken(),
+    |                                                     `- warning: 'makeLeftAngleToken(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.leftAngleToken instead [#DeprecatedDeclaration]
+348 |                     arguments: SyntaxFactory.makeGenericArgumentList([
+349 |                         SyntaxFactory.makeGenericArgument(argumentType: rawReturnType, trailingComma: nil)
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:348:46: warning: 'makeGenericArgumentList' is deprecated: Use initializer on GenericArgumentListSyntax [#DeprecatedDeclaration]
+346 |                 genericArgumentClause: SyntaxFactory.makeGenericArgumentClause(
+347 |                     leftAngleBracket: SyntaxFactory.makeLeftAngleToken(),
+348 |                     arguments: SyntaxFactory.makeGenericArgumentList([
+    |                                              `- warning: 'makeGenericArgumentList' is deprecated: Use initializer on GenericArgumentListSyntax [#DeprecatedDeclaration]
+349 |                         SyntaxFactory.makeGenericArgument(argumentType: rawReturnType, trailingComma: nil)
+350 |                     ]),
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:349:39: warning: 'makeGenericArgument(_:argumentType:_:trailingComma:_:)' is deprecated: Use initializer on GenericArgumentSyntax [#DeprecatedDeclaration]
+347 |                     leftAngleBracket: SyntaxFactory.makeLeftAngleToken(),
+348 |                     arguments: SyntaxFactory.makeGenericArgumentList([
+349 |                         SyntaxFactory.makeGenericArgument(argumentType: rawReturnType, trailingComma: nil)
+    |                                       `- warning: 'makeGenericArgument(_:argumentType:_:trailingComma:_:)' is deprecated: Use initializer on GenericArgumentSyntax [#DeprecatedDeclaration]
+350 |                     ]),
+351 |                     rightAngleBracket: SyntaxFactory.makeRightAngleToken()
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:351:54: warning: 'makeRightAngleToken(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.rightAngleToken instead [#DeprecatedDeclaration]
+349 |                         SyntaxFactory.makeGenericArgument(argumentType: rawReturnType, trailingComma: nil)
+350 |                     ]),
+351 |                     rightAngleBracket: SyntaxFactory.makeRightAngleToken()
+    |                                                      `- warning: 'makeRightAngleToken(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.rightAngleToken instead [#DeprecatedDeclaration]
+352 |                 )
+353 |             )).as(TypeSyntax.self)!
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:359:38: warning: 'makeLeftParenToken(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.leftParenToken instead [#DeprecatedDeclaration]
+357 |
+358 |         let type = SyntaxFactory.makeFunctionType(
+359 |             leftParen: SyntaxFactory.makeLeftParenToken(),
+    |                                      `- warning: 'makeLeftParenToken(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.leftParenToken instead [#DeprecatedDeclaration]
+360 |             arguments: arguments,
+361 |             rightParen: SyntaxFactory.makeRightParenToken().withTrailingTrivia(.spaces(1)),
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:361:39: warning: 'makeRightParenToken(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.rightParenToken instead [#DeprecatedDeclaration]
+359 |             leftParen: SyntaxFactory.makeLeftParenToken(),
+360 |             arguments: arguments,
+361 |             rightParen: SyntaxFactory.makeRightParenToken().withTrailingTrivia(.spaces(1)),
+    |                                       `- warning: 'makeRightParenToken(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.rightParenToken instead [#DeprecatedDeclaration]
+362 |             throwsOrRethrowsKeyword: nil,
+363 |             arrow: SyntaxFactory.makeArrowToken().withTrailingTrivia(.spaces(1)),
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:363:34: warning: 'makeArrowToken(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.arrowToken instead [#DeprecatedDeclaration]
+361 |             rightParen: SyntaxFactory.makeRightParenToken().withTrailingTrivia(.spaces(1)),
+362 |             throwsOrRethrowsKeyword: nil,
+363 |             arrow: SyntaxFactory.makeArrowToken().withTrailingTrivia(.spaces(1)),
+    |                                  `- warning: 'makeArrowToken(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.arrowToken instead [#DeprecatedDeclaration]
+364 |             returnType: returnType
+365 |         )
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:440:52: warning: 'makeClassKeyword(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.classKeywordKeyword instead [#DeprecatedDeclaration]
+438 |                         builder.fixItReplace(
+439 |                             staticModifier.sourceRange(converter: self.converter, afterLeadingTrivia: true, afterTrailingTrivia: true),
+440 |                             with: "\(SyntaxFactory.makeClassKeyword())"
+    |                                                    `- warning: 'makeClassKeyword(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.classKeywordKeyword instead [#DeprecatedDeclaration]
+441 |                         )
+442 |                     }
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:18:9: warning: 'makeFunctionType(_:leftParen:_:arguments:_:rightParen:_:asyncKeyword:_:throwsOrRethrowsKeyword:_:arrow:_:returnType:_:)' is deprecated: Use initializer on FunctionTypeSyntax [#DeprecatedDeclaration]
+ 16 |         returnType: TypeSyntax
+ 17 |     ) -> FunctionTypeSyntax {
+ 18 |         makeFunctionType(
+    |         `- warning: 'makeFunctionType(_:leftParen:_:arguments:_:rightParen:_:asyncKeyword:_:throwsOrRethrowsKeyword:_:arrow:_:returnType:_:)' is deprecated: Use initializer on FunctionTypeSyntax [#DeprecatedDeclaration]
+ 19 |             leftParen: leftParen,
+ 20 |             arguments: arguments,
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:39:9: warning: 'makeDeclModifier(_:name:_:detail:_:)' is deprecated: Use initializer on DeclModifierSyntax [#DeprecatedDeclaration]
+ 37 |         detailRightParen: Any?
+ 38 |     ) -> DeclModifierSyntax {
+ 39 |         makeDeclModifier(name: name, detail: nil)
+    |         `- warning: 'makeDeclModifier(_:name:_:detail:_:)' is deprecated: Use initializer on DeclModifierSyntax [#DeprecatedDeclaration]
+ 40 |     }
+ 41 | }
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:261:57: warning: 'makeIdentifier(_:leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.identifier instead [#DeprecatedDeclaration]
+259 |                 element = element.withFirstName(element.firstName?.withTrailingTrivia(.spaces(1)))
+260 |             }
+261 |             return element.withSecondName(SyntaxFactory.makeIdentifier("arg\(idx + 1)"))
+    |                                                         `- warning: 'makeIdentifier(_:leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.identifier instead [#DeprecatedDeclaration]
+262 |         }
+263 |         guard elements.count == paramList.count else { return nil }
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:264:78: warning: 'makeFunctionParameterList' is deprecated: Use initializer on FunctionParameterListSyntax [#DeprecatedDeclaration]
+262 |         }
+263 |         guard elements.count == paramList.count else { return nil }
+264 |         let input = function.signature.input.withParameterList(SyntaxFactory.makeFunctionParameterList(elements))
+    |                                                                              `- warning: 'makeFunctionParameterList' is deprecated: Use initializer on FunctionParameterListSyntax [#DeprecatedDeclaration]
+265 |         let signature = function.signature.withInput(input).withOutput(function.signature.output?.withoutTrailingTrivia())
+266 |         let function2 = function.withoutTrivia().withSignature(signature)
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:272:41: warning: 'makeIdentifier(_:leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.identifier instead [#DeprecatedDeclaration]
+270 |                 // whereas modifiers need to come after the attributes
+271 |                 SyntaxFactory.makeDeclModifier(
+272 |                     name: SyntaxFactory.makeIdentifier("override"),
+    |                                         `- warning: 'makeIdentifier(_:leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.identifier instead [#DeprecatedDeclaration]
+273 |                     detailLeftParen: nil, detail: nil, detailRightParen: nil
+274 |                 ).withTrailingTrivia(.spaces(1))
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:276:37: warning: 'makeBlankCodeBlock(presence:)' is deprecated: Use initializer on CodeBlockSyntax [#DeprecatedDeclaration]
+274 |                 ).withTrailingTrivia(.spaces(1))
+275 |             )
+276 |             .withBody(SyntaxFactory.makeBlankCodeBlock())
+    |                                     `- warning: 'makeBlankCodeBlock(presence:)' is deprecated: Use initializer on CodeBlockSyntax [#DeprecatedDeclaration]
+277 |             .withFuncKeyword(function.funcKeyword.withoutLeadingTrivia())
+278 |         return Syntax(function2)
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:291:38: warning: 'makeDeclNameArgument(_:name:_:colon:_:)' is deprecated: Use initializer on DeclNameArgumentSyntax [#DeprecatedDeclaration]
+289 |             let argumentsArray = params.compactMap { param -> DeclNameArgumentSyntax? in
+290 |                 guard let firstName = param.firstName, let colon = param.colon else { return nil }
+291 |                 return SyntaxFactory.makeDeclNameArgument(
+    |                                      `- warning: 'makeDeclNameArgument(_:name:_:colon:_:)' is deprecated: Use initializer on DeclNameArgumentSyntax [#DeprecatedDeclaration]
+292 |                     name: firstName.withoutTrivia(), colon: colon.withoutTrivia()
+293 |                 )
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:296:47: warning: 'makeDeclNameArguments(_:leftParen:_:arguments:_:rightParen:_:)' is deprecated: Use initializer on DeclNameArgumentsSyntax [#DeprecatedDeclaration]
+294 |             }
+295 |             guard argumentsArray.count == params.count else { return nil }
+296 |             declNameArguments = SyntaxFactory.makeDeclNameArguments(
+    |                                               `- warning: 'makeDeclNameArguments(_:leftParen:_:arguments:_:rightParen:_:)' is deprecated: Use initializer on DeclNameArgumentsSyntax [#DeprecatedDeclaration]
+297 |                 leftParen: SyntaxFactory.makeLeftParenToken(),
+298 |                 arguments: SyntaxFactory.makeDeclNameArgumentList(argumentsArray),
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:297:42: warning: 'makeLeftParenToken(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.leftParenToken instead [#DeprecatedDeclaration]
+295 |             guard argumentsArray.count == params.count else { return nil }
+296 |             declNameArguments = SyntaxFactory.makeDeclNameArguments(
+297 |                 leftParen: SyntaxFactory.makeLeftParenToken(),
+    |                                          `- warning: 'makeLeftParenToken(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.leftParenToken instead [#DeprecatedDeclaration]
+298 |                 arguments: SyntaxFactory.makeDeclNameArgumentList(argumentsArray),
+299 |                 rightParen: SyntaxFactory.makeRightParenToken()
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:298:42: warning: 'makeDeclNameArgumentList' is deprecated: Use initializer on DeclNameArgumentListSyntax [#DeprecatedDeclaration]
+296 |             declNameArguments = SyntaxFactory.makeDeclNameArguments(
+297 |                 leftParen: SyntaxFactory.makeLeftParenToken(),
+298 |                 arguments: SyntaxFactory.makeDeclNameArgumentList(argumentsArray),
+    |                                          `- warning: 'makeDeclNameArgumentList' is deprecated: Use initializer on DeclNameArgumentListSyntax [#DeprecatedDeclaration]
+299 |                 rightParen: SyntaxFactory.makeRightParenToken()
+300 |             )
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:299:43: warning: 'makeRightParenToken(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.rightParenToken instead [#DeprecatedDeclaration]
+297 |                 leftParen: SyntaxFactory.makeLeftParenToken(),
+298 |                 arguments: SyntaxFactory.makeDeclNameArgumentList(argumentsArray),
+299 |                 rightParen: SyntaxFactory.makeRightParenToken()
+    |                                           `- warning: 'makeRightParenToken(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.rightParenToken instead [#DeprecatedDeclaration]
+300 |             )
+301 |         }
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:303:37: warning: 'makeIdentifierExpr(_:identifier:_:declNameArguments:_:)' is deprecated: Use initializer on IdentifierExprSyntax [#DeprecatedDeclaration]
+301 |         }
+302 |
+303 |         return Syntax(SyntaxFactory.makeIdentifierExpr(identifier: function.identifier, declNameArguments: declNameArguments))
+    |                                     `- warning: 'makeIdentifierExpr(_:identifier:_:declNameArguments:_:)' is deprecated: Use initializer on IdentifierExprSyntax [#DeprecatedDeclaration]
+304 |     }
+305 |
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:324:31: warning: 'makeTypeIdentifier(_:leadingTrivia:trailingTrivia:)' is deprecated: Use initializer on SimpleTypeIdentifierSyntax [#DeprecatedDeclaration]
+322 |         case .method(let firstType, let _returnsUnmanaged):
+323 |             prefixTypes = [
+324 |                 SyntaxFactory.makeTypeIdentifier(firstType),
+    |                               `- warning: 'makeTypeIdentifier(_:leadingTrivia:trailingTrivia:)' is deprecated: Use initializer on SimpleTypeIdentifierSyntax [#DeprecatedDeclaration]
+325 |                 SyntaxFactory.makeTypeIdentifier("Selector")
+326 |             ]
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:325:31: warning: 'makeTypeIdentifier(_:leadingTrivia:trailingTrivia:)' is deprecated: Use initializer on SimpleTypeIdentifierSyntax [#DeprecatedDeclaration]
+323 |             prefixTypes = [
+324 |                 SyntaxFactory.makeTypeIdentifier(firstType),
+325 |                 SyntaxFactory.makeTypeIdentifier("Selector")
+    |                               `- warning: 'makeTypeIdentifier(_:leadingTrivia:trailingTrivia:)' is deprecated: Use initializer on SimpleTypeIdentifierSyntax [#DeprecatedDeclaration]
+326 |             ]
+327 |             returnsUnmanaged = _returnsUnmanaged
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:333:27: warning: 'makeTupleTypeElement(type:trailingComma:)' is deprecated: Use initializer on TupleTypeSyntax [#DeprecatedDeclaration]
+331 |         let last = types.last
+332 |         let argumentsArray = types.map { type in
+333 |             SyntaxFactory.makeTupleTypeElement(
+    |                           `- warning: 'makeTupleTypeElement(type:trailingComma:)' is deprecated: Use initializer on TupleTypeSyntax [#DeprecatedDeclaration]
+334 |                 type: type,
+335 |                 trailingComma: type == last ? nil : SyntaxFactory.makeCommaToken().withTrailingTrivia(.spaces(1))
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:335:67: warning: 'makeCommaToken(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.commaToken instead [#DeprecatedDeclaration]
+333 |             SyntaxFactory.makeTupleTypeElement(
+334 |                 type: type,
+335 |                 trailingComma: type == last ? nil : SyntaxFactory.makeCommaToken().withTrailingTrivia(.spaces(1))
+    |                                                                   `- warning: 'makeCommaToken(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.commaToken instead [#DeprecatedDeclaration]
+336 |             )
+337 |         }
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:338:39: warning: 'makeTupleTypeElementList' is deprecated: Use initializer on TupleTypeElementListSyntax [#DeprecatedDeclaration]
+336 |             )
+337 |         }
+338 |         let arguments = SyntaxFactory.makeTupleTypeElementList(argumentsArray)
+    |                                       `- warning: 'makeTupleTypeElementList' is deprecated: Use initializer on TupleTypeElementListSyntax [#DeprecatedDeclaration]
+339 |         let rawReturnType =
+340 |             function.signature.output?.returnType.withoutTrivia() ??
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:341:27: warning: 'makeTypeIdentifier(_:leadingTrivia:trailingTrivia:)' is deprecated: Use initializer on SimpleTypeIdentifierSyntax [#DeprecatedDeclaration]
+339 |         let rawReturnType =
+340 |             function.signature.output?.returnType.withoutTrivia() ??
+341 |             SyntaxFactory.makeTypeIdentifier("Void")
+    |                           `- warning: 'makeTypeIdentifier(_:leadingTrivia:trailingTrivia:)' is deprecated: Use initializer on SimpleTypeIdentifierSyntax [#DeprecatedDeclaration]
+342 |         let returnType: TypeSyntax
+343 |         if returnsUnmanaged {
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:344:47: warning: 'makeSimpleTypeIdentifier(_:name:_:genericArgumentClause:_:)' is deprecated: Use initializer on SimpleTypeIdentifierSyntax [#DeprecatedDeclaration]
+342 |         let returnType: TypeSyntax
+343 |         if returnsUnmanaged {
+344 |             returnType = Syntax(SyntaxFactory.makeSimpleTypeIdentifier(
+    |                                               `- warning: 'makeSimpleTypeIdentifier(_:name:_:genericArgumentClause:_:)' is deprecated: Use initializer on SimpleTypeIdentifierSyntax [#DeprecatedDeclaration]
+345 |                 name: SyntaxFactory.makeIdentifier("Unmanaged"),
+346 |                 genericArgumentClause: SyntaxFactory.makeGenericArgumentClause(
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:345:37: warning: 'makeIdentifier(_:leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.identifier instead [#DeprecatedDeclaration]
+343 |         if returnsUnmanaged {
+344 |             returnType = Syntax(SyntaxFactory.makeSimpleTypeIdentifier(
+345 |                 name: SyntaxFactory.makeIdentifier("Unmanaged"),
+    |                                     `- warning: 'makeIdentifier(_:leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.identifier instead [#DeprecatedDeclaration]
+346 |                 genericArgumentClause: SyntaxFactory.makeGenericArgumentClause(
+347 |                     leftAngleBracket: SyntaxFactory.makeLeftAngleToken(),
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:346:54: warning: 'makeGenericArgumentClause(_:leftAngleBracket:_:arguments:_:rightAngleBracket:_:)' is deprecated: Use initializer on GenericArgumentClauseSyntax [#DeprecatedDeclaration]
+344 |             returnType = Syntax(SyntaxFactory.makeSimpleTypeIdentifier(
+345 |                 name: SyntaxFactory.makeIdentifier("Unmanaged"),
+346 |                 genericArgumentClause: SyntaxFactory.makeGenericArgumentClause(
+    |                                                      `- warning: 'makeGenericArgumentClause(_:leftAngleBracket:_:arguments:_:rightAngleBracket:_:)' is deprecated: Use initializer on GenericArgumentClauseSyntax [#DeprecatedDeclaration]
+347 |                     leftAngleBracket: SyntaxFactory.makeLeftAngleToken(),
+348 |                     arguments: SyntaxFactory.makeGenericArgumentList([
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:347:53: warning: 'makeLeftAngleToken(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.leftAngleToken instead [#DeprecatedDeclaration]
+345 |                 name: SyntaxFactory.makeIdentifier("Unmanaged"),
+346 |                 genericArgumentClause: SyntaxFactory.makeGenericArgumentClause(
+347 |                     leftAngleBracket: SyntaxFactory.makeLeftAngleToken(),
+    |                                                     `- warning: 'makeLeftAngleToken(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.leftAngleToken instead [#DeprecatedDeclaration]
+348 |                     arguments: SyntaxFactory.makeGenericArgumentList([
+349 |                         SyntaxFactory.makeGenericArgument(argumentType: rawReturnType, trailingComma: nil)
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:348:46: warning: 'makeGenericArgumentList' is deprecated: Use initializer on GenericArgumentListSyntax [#DeprecatedDeclaration]
+346 |                 genericArgumentClause: SyntaxFactory.makeGenericArgumentClause(
+347 |                     leftAngleBracket: SyntaxFactory.makeLeftAngleToken(),
+348 |                     arguments: SyntaxFactory.makeGenericArgumentList([
+    |                                              `- warning: 'makeGenericArgumentList' is deprecated: Use initializer on GenericArgumentListSyntax [#DeprecatedDeclaration]
+349 |                         SyntaxFactory.makeGenericArgument(argumentType: rawReturnType, trailingComma: nil)
+350 |                     ]),
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:349:39: warning: 'makeGenericArgument(_:argumentType:_:trailingComma:_:)' is deprecated: Use initializer on GenericArgumentSyntax [#DeprecatedDeclaration]
+347 |                     leftAngleBracket: SyntaxFactory.makeLeftAngleToken(),
+348 |                     arguments: SyntaxFactory.makeGenericArgumentList([
+349 |                         SyntaxFactory.makeGenericArgument(argumentType: rawReturnType, trailingComma: nil)
+    |                                       `- warning: 'makeGenericArgument(_:argumentType:_:trailingComma:_:)' is deprecated: Use initializer on GenericArgumentSyntax [#DeprecatedDeclaration]
+350 |                     ]),
+351 |                     rightAngleBracket: SyntaxFactory.makeRightAngleToken()
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:351:54: warning: 'makeRightAngleToken(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.rightAngleToken instead [#DeprecatedDeclaration]
+349 |                         SyntaxFactory.makeGenericArgument(argumentType: rawReturnType, trailingComma: nil)
+350 |                     ]),
+351 |                     rightAngleBracket: SyntaxFactory.makeRightAngleToken()
+    |                                                      `- warning: 'makeRightAngleToken(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.rightAngleToken instead [#DeprecatedDeclaration]
+352 |                 )
+353 |             )).as(TypeSyntax.self)!
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:359:38: warning: 'makeLeftParenToken(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.leftParenToken instead [#DeprecatedDeclaration]
+357 |
+358 |         let type = SyntaxFactory.makeFunctionType(
+359 |             leftParen: SyntaxFactory.makeLeftParenToken(),
+    |                                      `- warning: 'makeLeftParenToken(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.leftParenToken instead [#DeprecatedDeclaration]
+360 |             arguments: arguments,
+361 |             rightParen: SyntaxFactory.makeRightParenToken().withTrailingTrivia(.spaces(1)),
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:361:39: warning: 'makeRightParenToken(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.rightParenToken instead [#DeprecatedDeclaration]
+359 |             leftParen: SyntaxFactory.makeLeftParenToken(),
+360 |             arguments: arguments,
+361 |             rightParen: SyntaxFactory.makeRightParenToken().withTrailingTrivia(.spaces(1)),
+    |                                       `- warning: 'makeRightParenToken(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.rightParenToken instead [#DeprecatedDeclaration]
+362 |             throwsOrRethrowsKeyword: nil,
+363 |             arrow: SyntaxFactory.makeArrowToken().withTrailingTrivia(.spaces(1)),
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:363:34: warning: 'makeArrowToken(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.arrowToken instead [#DeprecatedDeclaration]
+361 |             rightParen: SyntaxFactory.makeRightParenToken().withTrailingTrivia(.spaces(1)),
+362 |             throwsOrRethrowsKeyword: nil,
+363 |             arrow: SyntaxFactory.makeArrowToken().withTrailingTrivia(.spaces(1)),
+    |                                  `- warning: 'makeArrowToken(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.arrowToken instead [#DeprecatedDeclaration]
+364 |             returnType: returnType
+365 |         )
+
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionProcessor/OrionVisitor.swift:440:52: warning: 'makeClassKeyword(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.classKeywordKeyword instead [#DeprecatedDeclaration]
+438 |                         builder.fixItReplace(
+439 |                             staticModifier.sourceRange(converter: self.converter, afterLeadingTrivia: true, afterTrailingTrivia: true),
+440 |                             with: "\(SyntaxFactory.makeClassKeyword())"
+    |                                                    `- warning: 'makeClassKeyword(leadingTrivia:trailingTrivia:)' is deprecated: Use TokenSyntax.classKeywordKeyword instead [#DeprecatedDeclaration]
+441 |                         )
+442 |                     }
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+[39/44] Compiling OrionCLI main.swift
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionCLI/main.swift:5:1: warning: extension declares a conformance of imported type 'Backend' to imported protocols 'ExpressibleByArgument', '_SendableMetatype'; this will not behave correctly if the owners of 'OrionProcessor' introduce this conformance in the future
+  3 | import ArgumentParser
+  4 |
+  5 | extension OrionGenerator.Backend: ExpressibleByArgument {
+    | |- warning: extension declares a conformance of imported type 'Backend' to imported protocols 'ExpressibleByArgument', '_SendableMetatype'; this will not behave correctly if the owners of 'OrionProcessor' introduce this conformance in the future
+    | `- note: add '@retroactive' to silence this warning
+  6 |     public init?(argument: String) {
+  7 |         self.init(name: argument)
+[39/44] Write Objects.LinkFileList
+[41/44] Compiling OrionCLI main.swift
+/Users/runner/work/spotilife-v2/spotilife-v2/theos/vendor/orion/Sources/OrionCLI/main.swift:5:1: warning: extension declares a conformance of imported type 'Backend' to imported protocols 'ExpressibleByArgument', '_SendableMetatype'; this will not behave correctly if the owners of 'OrionProcessor' introduce this conformance in the future
+  3 | import ArgumentParser
+  4 |
+  5 | extension OrionGenerator.Backend: ExpressibleByArgument {
+    | |- warning: extension declares a conformance of imported type 'Backend' to imported protocols 'ExpressibleByArgument', '_SendableMetatype'; this will not behave correctly if the owners of 'OrionProcessor' introduce this conformance in the future
+    | `- note: add '@retroactive' to silence this warning
+  6 |     public init?(argument: String) {
+  7 |         self.init(name: argument)
+[41/44] Write Objects.LinkFileList
+[42/44] Linking OrionCLI-tool
+[42/44] Linking OrionCLI
+Build complete! (234.79s)
+Sources/EeveeSpotify/DataLoaderServiceHooks.x.swift:14:5: warning: Unused directive
+Sources/EeveeSpotify/DataLoaderServiceHooks.x.swift:17:5: warning: Unused directive
+Sources/EeveeSpotify/SessionProtection.x.swift:27:5: warning: Unused directive
+==> Preprocessing Sources/EeveeSpotify/Lyrics/NowPlayingScrollViewControllerInstanceHook.x.swift, Sources/EeveeSpotify/Lyrics/CustomLyrics+ShowAttributes.x.swift, Sources/EeveeSpotify/Lyrics/CustomLyrics+HideOnError.x.swift, Sources/EeveeSpotify/Lyrics/CustomLyrics+DisableReportButton.x.swift, Sources/EeveeSpotify/Lyrics/V91TrackMetadataCapture.x.swift, Sources/EeveeSpotify/Lyrics/CustomLyrics.x.swift, Sources/EeveeSpotify/Lyrics/CustomLyrics+ScrollCrashFix.x.swift, Sources/EeveeSpotify/Lyrics/CustomLyrics+AllTracksLyrics.x.swift, Sources/EeveeSpotify/Settings/EeveeSettings91x.x.swift, Sources/EeveeSpotify/Settings/EeveeSettings.x.swift, Sources/EeveeSpotify/Settings/EeveeSettingsUniversal.x.swift, Sources/EeveeSpotify/Experiments/LiveContainer/LiveContainerSharing.x.swift, Sources/EeveeSpotify/Experiments/Instagram/ShowInstagramDestination.x.swift, Sources/EeveeSpotify/OpenSpotify.x.swift, Sources/EeveeSpotify/SessionProtection.x.swift, Sources/EeveeSpotify/DataLoaderServiceHooks.x.swift, Sources/EeveeSpotify/DarkPopUps.x.swift, Sources/EeveeSpotify/Premium/HubsAdBlocker.x.swift, Sources/EeveeSpotify/Premium/ServerSidedReminder.x.swift, Sources/EeveeSpotify/Premium/LikedSongsEnabler.x.swift, Sources/EeveeSpotify/Premium/TrackRowsEnabler.x.swift, Sources/EeveeSpotify/Premium/Helpers/AutoDownloadHook.x.swift, Sources/EeveeSpotify/Premium/SiriNoPlayAsRadio.x.swift, Sources/EeveeSpotify/Premium/DynamicPremium+ModifyBootstrap.x.swift, Sources/EeveeSpotify/Tweak.x.swift…
+==> Compiling Sources/EeveeSpotify/Lyrics/NowPlayingScrollViewControllerInstanceHook.x.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/CustomLyrics+ShowAttributes.x.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/CustomLyrics+HideOnError.x.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Repositories/GeniusLyricsRepository.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Repositories/LrclibLyricsRepository.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Repositories/MusixmatchLyricsRepository.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Repositories/PetitLyricsRepository.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Settings/LyricsOptions+UserDefaults.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Settings/LyricsSource.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Settings/LyricsOptions.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Settings/LyricsSource+UserDefaults.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Settings/LyricsColorOptions+UserDefaults.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Settings/LyricsColorOptions.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Lrclib/LrclibSong.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/LyricsDto.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/LyricsLoadingState.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/LyricsSearchQuery.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Lyrics.pb.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Musixmatch/MusixmatchSubtitle.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Musixmatch/MusixmatchTime.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Extensions/String+IsLocalTrackIdentifierExtension.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Extensions/SPTPlayerTrack+Extension.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Extensions/NowPlayingScrollViewController+Extension.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Extensions/NowPlayingScrollDataSourceImplementation+Extension.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Petit/PetitLyricsWord.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Petit/PetitLyricsLine.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Petit/PetitResponse.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Petit/PetitLyricsType.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Petit/PetitSong.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Petit/PetitLyricsData.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/LyricsRomanizationStatus.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Headers/SPTPlayerTrack.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Headers/NowPlayingScrollDataSourceImplementation.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Headers/NPVScrollViewController.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Headers/NowPlayingScrollViewController.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Headers/SPTNowPlayingBackgroundViewModel.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Headers/StatefulPlayerImplementation.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Headers/__UIDiffableDataSource.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/LyricsTranslationDto.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/LyricsError.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/LyricsLineDto.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Genius/GeniusSong.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Genius/GeniusSectionsResponse.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Genius/GeniusDataResponse.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Genius/GeniusRootResponse.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Genius/GeniusLyrics.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Genius/GeniusHit.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Genius/GeniusSection.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Genius/GeniusSongResponse.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Models/Genius/GeniusHitResult.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/CustomLyrics+DisableReportButton.x.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/V91TrackMetadataCapture.x.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/CustomLyrics.x.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/CustomLyrics+ScrollCrashFix.x.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/CustomLyrics+AllTracksLyrics.x.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Lyrics/Protocols/LyricsRepository.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/EeveeSettings91x.x.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/Sections/Lyrics/ViewModels/EeveeLyricsSettingsViewModel+setupBindings.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/Sections/Lyrics/ViewModels/EeveeLyricsSettingsViewModel.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/Sections/Lyrics/Models/AnonymousTokenError.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/Sections/Lyrics/Models/LrclibURLState.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/Sections/Lyrics/Views/EeveeLyricsSettingsView+showMusixmatchTokenAlert.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/Sections/Lyrics/Views/EeveeLyricsSettingsView.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/Sections/Lyrics/Views/EeveeLyricsSettingsView+lyricsSourceSection.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/Sections/Lyrics/Helpers/AnonymousTokenHelper.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/Sections/Lyrics/ViewModifiers/DynamicIconModifier.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/Sections/UI/Views/EeveeUISettingsView.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/Sections/Experiments/Views/EeveeExperimentsSettingsView.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/Sections/Downloads/Views/EeveeDownloadsSettingsView.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/Sections/Patching/Views/EeveePatchingSettingsView.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/EeveeSettings.x.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/Shared/ViewModels/ImageViewModel.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/Shared/GitHub/Models/GitHubUser.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/Shared/GitHub/Models/EeveeContributorSection.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/Shared/GitHub/Models/GitHubRelease.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/Shared/GitHub/Models/EeveeContributor.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/Shared/GitHub/Views/EeveeContributorsSheetView.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/Shared/GitHub/Views/EeveeContributorView.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/Shared/GitHub/Helpers/GitHubHelper.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/Shared/Views/NonIPadSpacerView.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/Shared/Views/ChevronRightView.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/Shared/Views/ImageView.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/Shared/ViewModifiers/ListRowSeparatorHidden.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/Models/Headers/SPTSettingsTableViewCell.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/Models/Headers/SPTDisclosureAccessoryView.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/ViewControllers/SPTPageViewController.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/ViewControllers/EeveeSettingsViewController.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/EeveeSettingsUniversal.x.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/Views/NavigationSectionView.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/Views/EeveeSettingsView.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/Views/CommonIssuesTipView.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Settings/Views/EeveeSettingsVersionView.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Experiments/LiveContainer/LiveContainerSharing.x.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Experiments/Models/Settings/ExperimentsOptions.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Experiments/Models/Settings/ExperimentsOptions+UserDefaults.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Experiments/Instagram/Models/Headers/SPTSharingSDKDestination.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Experiments/Instagram/ShowInstagramDestination.x.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/OpenSpotify.x.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Auxiliaries/Box/IntBox.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Auxiliaries/Box/UnkeyedBox.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Auxiliaries/Box/ValueBox.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Auxiliaries/Box/DateBox.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Auxiliaries/Box/FloatBox.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Auxiliaries/Box/KeyedBox.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Auxiliaries/Box/Box.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Auxiliaries/Box/NullBox.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Auxiliaries/Box/UIntBox.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Auxiliaries/Box/URLBox.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Auxiliaries/Box/ChoiceBox.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Auxiliaries/Box/SharedBox.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Auxiliaries/Box/DecimalBox.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Auxiliaries/Box/SingleKeyedBox.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Auxiliaries/Box/DataBox.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Auxiliaries/Box/DoubleBox.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Auxiliaries/Box/BoolBox.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Auxiliaries/Box/StringBox.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Auxiliaries/XMLHeader.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Auxiliaries/String+Extensions.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Auxiliaries/XMLStackParser.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Auxiliaries/Metatypes.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Auxiliaries/XMLChoiceCodingKey.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Auxiliaries/Element.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Auxiliaries/ISO8601DateFormatter.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Auxiliaries/ElementAndAttribute.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Auxiliaries/Utils.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Auxiliaries/XMLDocumentType.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Auxiliaries/XMLKey.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Auxiliaries/KeyedStorage.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Auxiliaries/XMLCoderElement.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Auxiliaries/Attribute.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Encoder/DynamicNodeEncoding.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Encoder/XMLEncoderImplementation.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Encoder/SingleValueEncodingContainer.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Encoder/XMLReferencingEncoder.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Encoder/XMLChoiceEncodingContainer.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Encoder/XMLKeyedEncodingContainer.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Encoder/EncodingErrorExtension.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Encoder/XMLUnkeyedEncodingContainer.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Encoder/XMLEncoder.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Encoder/XMLEncodingStorage.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Decoder/DecodingErrorExtension.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Decoder/XMLUnkeyedDecodingContainer.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Decoder/SingleValueDecodingContainer.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Decoder/XMLChoiceDecodingContainer.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Decoder/XMLKeyedDecodingContainer.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Decoder/DynamicNodeDecoding.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Decoder/XMLDecodingStorage.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Decoder/XMLDecoder.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Dependencies/XMLCoder/Decoder/XMLDecoderImplementation.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Shared/Models/UserDefaultPropertyWrapper.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Shared/Models/Extensions/UIDevice+Extension.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Shared/Models/Extensions/StringArray+Extension.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Shared/Models/Extensions/UIColor+Extension.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Shared/Models/Extensions/Collection+Extension.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Shared/Models/Extensions/UIView+Extension.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Shared/Models/Extensions/Locale+Extension.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Shared/Models/Extensions/URL+Extension.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Shared/Models/Extensions/String+Extension.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Shared/Models/Extensions/Color+Extension.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Shared/Models/Extensions/UserDefaults+Extension.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Shared/Models/Extensions/Dictionary+Extension.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Shared/Models/Extensions/Data+Extension.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Shared/Models/Extensions/CharacterSet+Extension.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Shared/Models/VersionHookTarget.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Shared/Models/Headers/SPTEncorePopUpDialogModel.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Shared/Models/Headers/SPTEncoreLabel.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Shared/Models/Headers/SPTEncoreAttributes.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Shared/Models/Headers/SPTURL.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Shared/Models/Headers/SPTEncoreTypeStyle.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Shared/Models/Headers/SPTEncorePopUpPresenter.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Shared/Models/Headers/SPTEncoreAttributedString.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Shared/Models/Headers/SPTEncorePopUpDialog.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Shared/Helpers/WindowHelper.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Shared/Helpers/PopUpHelper.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Shared/Helpers/HookTargetHelper.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Shared/Helpers/LogHelper.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Shared/Helpers/URLSessionHelper.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Shared/Helpers/DownloadManager.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/SessionProtection.x.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/DataLoaderServiceHooks.x.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/DarkPopUps.x.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Premium/HubsAdBlocker.x.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Premium/Models/EeveePropertyReplacement.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Premium/Models/EeveePatchType.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Premium/Models/Extensions/UcsResponse+Extension.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Premium/Models/Extensions/BootstrapMessage+Extension.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Premium/Models/SpotifySessionDelegate.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Premium/Models/Protobuf/SpotifyPlan.pb.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Premium/Models/Protobuf/PremiumPlanRow.pb.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Premium/Models/Protobuf/YourPremiumBadge.pb.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Premium/Models/Protobuf/Account.pb.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Premium/DynamicPremium+ModifyingFunctions.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Premium/ServerSidedReminder.x.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Premium/LikedSongsEnabler.x.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Premium/TrackRowsEnabler.x.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Premium/DynamicPremium+PremiumPlanRow.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Premium/Helpers/AutoDownloadHook.x.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Premium/Helpers/BundleHelper.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Premium/Helpers/OfflineHelper.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Premium/SiriNoPlayAsRadio.x.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Premium/DynamicPremium+ModifyBootstrap.x.swift (arm64)…
+==> Compiling Sources/EeveeSpotify/Tweak.x.swift (arm64)…
+Sources/EeveeSpotify/Lyrics/Models/Lyrics.pb.swift:11:8: error: module compiled with Swift 6.0.3 cannot be imported by the Swift 6.3.3 compiler: /Users/runner/work/spotilife-v2/spotilife-v2/theos/lib/SwiftProtobuf.framework/Modules/SwiftProtobuf.swiftmodule/arm64-apple-ios.swiftmodule
+  9 |
+ 10 | import Foundation
+ 11 | import SwiftProtobuf
+    |        `- error: module compiled with Swift 6.0.3 cannot be imported by the Swift 6.3.3 compiler: /Users/runner/work/spotilife-v2/spotilife-v2/theos/lib/SwiftProtobuf.framework/Modules/SwiftProtobuf.swiftmodule/arm64-apple-ios.swiftmodule
+ 12 |
+ 13 | // If the compiler emits an error on this type, it is because this file
+
+make[4]: *** [/Users/runner/work/spotilife-v2/spotilife-v2/theos/makefiles/instance/rules.mk:375: internal-swift-EeveeSpotify-arm64] Error 1
+make[3]: *** [/Users/runner/work/spotilife-v2/spotilife-v2/theos/makefiles/instance/rules.mk:384: /Users/runner/work/spotilife-v2/spotilife-v2/.theos/obj/arm64/.swift-stamp] Error 2
+make[2]: *** [/Users/runner/work/spotilife-v2/spotilife-v2/theos/makefiles/instance/library.mk:52: /Users/runner/work/spotilife-v2/spotilife-v2/.theos/obj/arm64/EeveeSpotify.dylib] Error 2
+make[1]: *** [/Users/runner/work/spotilife-v2/spotilife-v2/theos/makefiles/instance/library.mk:37: internal-library-all_] Error 2
+make: *** [/Users/runner/work/spotilife-v2/spotilife-v2/theos/makefiles/master/rules.mk:146: EeveeSpotify.all.tweak.variables] Error 2
+Error: Process completed with exit code 2.

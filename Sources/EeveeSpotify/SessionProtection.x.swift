@@ -9,6 +9,11 @@ import Foundation
 // Extends OAuth token expiry to prevent internal reauth triggers.
 
 struct SessionLogoutHookGroup: HookGroup { }
+struct SPTAuthSessionHookGroup: HookGroup { }
+struct SessionServiceImplHookGroup: HookGroup { }
+struct LegacyLoginControllerHookGroup: HookGroup { }
+struct OauthAccessTokenBridgeHookGroup: HookGroup { }
+struct AblyHookGroup: HookGroup { }
 
 // Ably action name mapping for readable logs
 private let ablyActionNames: [Int: String] = [
@@ -21,7 +26,7 @@ private let ablyActionNames: [Int: String] = [
 // MARK: - SPTAuthSessionImplementation — Core Session Hooks
 
 class SPTAuthSessionHook: ClassHook<NSObject> {
-    typealias Group = SessionLogoutHookGroup
+    typealias Group = SPTAuthSessionHookGroup
     static let targetName = "SPTAuthSessionImplementation"
 
     // orion:new
@@ -91,7 +96,7 @@ class SPTAuthSessionHook: ClassHook<NSObject> {
 // MARK: - SessionServiceImpl (Connectivity_SessionImpl module)
 
 class SessionServiceImplHook: ClassHook<NSObject> {
-    typealias Group = SessionLogoutHookGroup
+    typealias Group = SessionServiceImplHookGroup
     static let targetName = "_TtC24Connectivity_SessionImpl18SessionServiceImpl"
 
     func automatedLogoutThenLogin() {
@@ -126,7 +131,7 @@ class SessionServiceImplHook: ClassHook<NSObject> {
 // MARK: - SPTAuthLegacyLoginControllerImplementation
 
 class LegacyLoginControllerHook: ClassHook<NSObject> {
-    typealias Group = SessionLogoutHookGroup
+    typealias Group = LegacyLoginControllerHookGroup
     static let targetName = "SPTAuthLegacyLoginControllerImplementation"
 
     func sessionDidLogout(_ session: AnyObject, withReason reason: AnyObject) {
@@ -172,7 +177,7 @@ class LegacyLoginControllerHook: ClassHook<NSObject> {
 // the internal timer from marking the token as expired.
 
 class OauthAccessTokenBridgeHook: ClassHook<NSObject> {
-    typealias Group = SessionLogoutHookGroup
+    typealias Group = OauthAccessTokenBridgeHookGroup
     static let targetName = "_TtC24Connectivity_SessionImplP33_831B98CC28223E431E21CD27ADD20AF222OauthAccessTokenBridge"
 
     // Hook the GETTER
@@ -245,7 +250,7 @@ private func extractAblyAction(_ text: String) -> Int? {
 }
 
 class ARTWebSocketTransportHook: ClassHook<NSObject> {
-    typealias Group = SessionLogoutHookGroup
+    typealias Group = AblyHookGroup
     static let targetName = "ARTWebSocketTransport"
 
     func webSocket(_ ws: AnyObject, didReceiveMessage message: AnyObject) {
@@ -286,7 +291,7 @@ class ARTWebSocketTransportHook: ClassHook<NSObject> {
 // MARK: - Ably SRWebSocket Frame Hook
 
 class ARTSRWebSocketHook: ClassHook<NSObject> {
-    typealias Group = SessionLogoutHookGroup
+    typealias Group = AblyHookGroup
     static let targetName = "ARTSRWebSocket"
 
     func _handleFrameWithData(_ data: NSData, opCode code: Int) {

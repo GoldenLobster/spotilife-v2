@@ -102,8 +102,45 @@ struct EeveeSpotify: Tweak {
     }
     
     init() {
-        // Activate session logout protection first (all versions)
+        // Always activate URLSessionTask hooks (system class, safe)
         SessionLogoutHookGroup().activate()
+
+        // Activate hook groups conditionally only if their target classes exist
+        if NSClassFromString("SPTAuthSessionImplementation") != nil {
+            SPTAuthSessionHookGroup().activate()
+            writeDebugLog("[INIT] Activated SPTAuthSessionHookGroup")
+        } else {
+            writeDebugLog("[INIT] Skipped SPTAuthSessionHookGroup (class not found)")
+        }
+
+        if NSClassFromString("_TtC24Connectivity_SessionImpl18SessionServiceImpl") != nil {
+            SessionServiceImplHookGroup().activate()
+            writeDebugLog("[INIT] Activated SessionServiceImplHookGroup")
+        } else {
+            writeDebugLog("[INIT] Skipped SessionServiceImplHookGroup (class not found)")
+        }
+
+        if NSClassFromString("SPTAuthLegacyLoginControllerImplementation") != nil {
+            LegacyLoginControllerHookGroup().activate()
+            writeDebugLog("[INIT] Activated LegacyLoginControllerHookGroup")
+        } else {
+            writeDebugLog("[INIT] Skipped LegacyLoginControllerHookGroup (class not found)")
+        }
+
+        let bridgeClass = "_TtC24Connectivity_SessionImplP33_831B98CC28223E431E21CD27ADD20AF222OauthAccessTokenBridge"
+        if NSClassFromString(bridgeClass) != nil {
+            OauthAccessTokenBridgeHookGroup().activate()
+            writeDebugLog("[INIT] Activated OauthAccessTokenBridgeHookGroup")
+        } else {
+            writeDebugLog("[INIT] Skipped OauthAccessTokenBridgeHookGroup (class not found)")
+        }
+
+        if NSClassFromString("ARTWebSocketTransport") != nil && NSClassFromString("ARTSRWebSocket") != nil {
+            AblyHookGroup().activate()
+            writeDebugLog("[INIT] Activated AblyHookGroup")
+        } else {
+            writeDebugLog("[INIT] Skipped AblyHookGroup (classes not found)")
+        }
 
         let spotifyVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
         let spotifyBuild = Bundle.main.infoDictionary!["CFBundleVersion"] as? String ?? "?"

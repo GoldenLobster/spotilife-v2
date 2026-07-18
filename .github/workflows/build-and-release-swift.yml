@@ -134,12 +134,7 @@ jobs:
         unzip -q "$SPOTIFY_PACKAGE" -d spotify_temp
         rm -rf spotify_temp/Payload/Spotify.app/Watch
         rm -rf spotify_temp/Payload/Spotify.app/PlugIns
-        cd spotify_temp
-        zip -qry ../spotify_clean.ipa Payload
-        cd ..
-        rm -rf spotify_temp
-        mv spotify_clean.ipa spotify.ipa
-        echo "SPOTIFY_PACKAGE=spotify.ipa" >> $GITHUB_ENV
+        echo "SPOTIFY_PAYLOAD_DIR=spotify_temp/Payload" >> $GITHUB_ENV
 
     - name: Setup insert-dylib
       run: |
@@ -168,9 +163,17 @@ jobs:
         EEVEESPOTIFY_PACKAGE="EeveeSpotify-${EEVEESPOTIFY_VERSION}-${SPOTIFY_VERSION}.ipa"
         echo "EEVEESPOTIFY_PACKAGE=$EEVEESPOTIFY_PACKAGE" >> $GITHUB_ENV
 
-        ivinject-arm64 "$SPOTIFY_PACKAGE" "$EEVEESPOTIFY_PACKAGE" \
+        mkdir -p spotify_patched_temp/Payload
+        
+        # Inject tweaks directly into the .app bundle to avoid C# .NET ZipArchive permission stripping
+        ivinject-arm64 spotify_temp/Payload/Spotify.app spotify_patched_temp/Payload/Spotify.app \
           -i "$EEVEESPOTIFY_ROOTFUL" \
-          -s - -d --level Optimal
+          -s - -d
+
+        # Use native macOS zip to preserve symlinks and Unix file modes (executable bits)
+        cd spotify_patched_temp
+        zip -qry ../"$EEVEESPOTIFY_PACKAGE" Payload
+        cd ..
 
     - name: Create Patched Package
       run: |

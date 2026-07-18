@@ -86,17 +86,20 @@ jobs:
           unzip -q spotify.ipa -d spotify_temp
           rm -rf spotify_temp/Payload/Spotify.app/Watch
           rm -rf spotify_temp/Payload/Spotify.app/PlugIns
-          cd spotify_temp
-          zip -qry ../spotify_clean.ipa Payload
-          cd ..
-          rm -rf spotify_temp
-          mv spotify_clean.ipa spotify.ipa
 
       - name: Create EeveeSpotify Package
         run: |
-          ivinject-arm64 spotify.ipa EeveeSpotify.ipa \
+          mkdir -p spotify_patched_temp/Payload
+          
+          # Inject tweaks directly into the .app bundle to avoid C# .NET ZipArchive permission stripping
+          ivinject-arm64 spotify_temp/Payload/Spotify.app spotify_patched_temp/Payload/Spotify.app \
             -i eeveespotify.deb "$OPENSPOTIFYSAFARIEXTENSION" \
-            -s - -d --level Optimal
+            -s - -d
+          
+          # Use native macOS zip to preserve symlinks and Unix file modes (executable bits)
+          cd spotify_patched_temp
+          zip -qry ../EeveeSpotify.ipa Payload
+          cd ..
 
       - name: Create Patched Package
         run: cp EeveeSpotify.ipa EeveeSpotify-patched.ipa

@@ -133,9 +133,9 @@ jobs:
       run: |
         unzip -q "$SPOTIFY_PACKAGE" -d spotify_temp
         rm -rf spotify_temp/Payload/Spotify.app/Watch
-        rm -rf spotify_temp/Payload/Spotify.app/PlugIns/*.appex
+        rm -rf spotify_temp/Payload/Spotify.app/PlugIns
         cd spotify_temp
-        zip -qr ../spotify_clean.ipa Payload
+        zip -qry ../spotify_clean.ipa Payload
         cd ..
         rm -rf spotify_temp
         mv spotify_clean.ipa spotify.ipa

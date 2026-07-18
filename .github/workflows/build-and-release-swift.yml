@@ -89,8 +89,8 @@ jobs:
 
     - name: Set EeveeSpotify Versions
       run: |
-        EEVEESPOTIFY_ROOTFUL=$(echo *iphoneos-arm.deb)
-        EEVEESPOTIFY_ROOTLESS=$(echo *iphoneos-arm64.deb)
+        EEVEESPOTIFY_ROOTFUL=$(ls com.eevee.spotify_*_iphoneos-arm.deb)
+        EEVEESPOTIFY_ROOTLESS=$(ls com.eevee.spotify_*_iphoneos-arm64.deb)
         EEVEESPOTIFY_VERSION=${${(s:_:)EEVEESPOTIFY_ROOTFUL}[2]}
 
         echo "EEVEESPOTIFY_ROOTFUL=$EEVEESPOTIFY_ROOTFUL" >> $GITHUB_ENV

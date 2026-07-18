@@ -169,7 +169,7 @@ jobs:
         echo "EEVEESPOTIFY_PACKAGE=$EEVEESPOTIFY_PACKAGE" >> $GITHUB_ENV
 
         ivinject-arm64 "$SPOTIFY_PACKAGE" "$EEVEESPOTIFY_PACKAGE" \
-          -i "$EEVEESPOTIFY_ROOTFUL" "$OPENSPOTIFYSAFARIEXTENSION" \
+          -i "$EEVEESPOTIFY_ROOTFUL" \
           -s - -d --level Optimal
 
     - name: Create Patched Package
